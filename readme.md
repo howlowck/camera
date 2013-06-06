@@ -1,5 +1,5 @@
 #Camera
-[here is the Demo](howlowck.github.io/camera)
+[here is the Demo](http://howlowck.github.io/camera)
 ## Features
 - Web worker for image processing;
 - Classic convolution method
