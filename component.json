@@ -3,6 +3,7 @@
 	"version" : "0.0.1",
 	"main" : "public/js/main.js",
 	"dependencies" : {
-		"jquery" : ">=0.0.1"
+		"jquery" : ">=0.0.1",
+        "d3" : "git://github.com/mbostock/d3.git"
 	}
 }
