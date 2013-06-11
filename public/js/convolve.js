@@ -1,49 +1,45 @@
-self.addEventListener('message', function (e) {
-    var //image = e.data.image,
-        matrix = e.data.conmat,
-        serMatrix = matrix.toString().split(','),
-        matrixLength = serMatrix.length,
-        newpx = [],
-        oldpx = e.data.image.data,
-        oldpxLength = oldpx.length,
-        w = e.data.width,
-        result;
+var convolve = function (oldPixels, width, convolveMatrix, divisor, offset) {
+    var conMatrixFlatten = convolveMatrix.toString().split(','),
+        conMatrixLength = conMatrixFlatten.length,
+        oldPixelsLength = oldPixels.length,
+        newpixels = [];
 
-    if (typeof divisor === 'undefined') {
-        //divisor = matrixLength;
-        divisor = 2;
-    }
-    if (typeof offset === 'undefined') {
-        offset = 0;
-    }
-
-    for (var i = 0; i < oldpxLength; i++) {
+    for (var i = 0; i < oldPixelsLength; i++) {
         if ((i + 1) % 4 === 0) {
-            newpx[i] = oldpx[i];
+            newpixels[i] = oldPixels[i];
             continue;
         }
 
         result = 0;
         var these = [
-            oldpx[i - w * 4 - 4] || oldpx[i],
-            oldpx[i - w * 4]     || oldpx[i],
-            oldpx[i - w * 4 + 4] || oldpx[i],
-            oldpx[i - 4]         || oldpx[i],
-            oldpx[i],
-            oldpx[i + 4]         || oldpx[i],
-            oldpx[i + w * 4 - 4] || oldpx[i],
-            oldpx[i + w * 4]     || oldpx[i],
-            oldpx[i + w * 4 + 4] || oldpx[i]
+            oldPixels[i - width * 4 - 4] || oldPixels[i],
+            oldPixels[i - width * 4]     || oldPixels[i],
+            oldPixels[i - width * 4 + 4] || oldPixels[i],
+            oldPixels[i - 4]         || oldPixels[i],
+            oldPixels[i],
+            oldPixels[i + 4]         || oldPixels[i],
+            oldPixels[i + width * 4 - 4] || oldPixels[i],
+            oldPixels[i + width * 4]     || oldPixels[i],
+            oldPixels[i + width * 4 + 4] || oldPixels[i]
         ];
 
-        for (var j = 0; j < matrixLength; j++) {
-            result += these[j] * serMatrix[j];
+        for (var j = 0; j < conMatrixLength; j++) {
+            result += these[j] * conMatrixFlatten[j];
         }
-
         result /= divisor;
-        result += offset;
-        newpx[i] = result;
+        newpixels[i] = result + offset; //workaround
     }
+    return newpixels;
+};
+
+self.addEventListener('message', function (e) {
+    var matrix = e.data.conmat,
+        oldpx = e.data.image.data,
+        w = e.data.width,
+        divisor = e.data.divisor,
+        offset = e.data.offset;
+
+    var newpx = convolve(oldpx, w, matrix, divisor, offset);
 
     //image.data = newpx;
     self.postMessage({image: newpx});

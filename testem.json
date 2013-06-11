@@ -1,0 +1,7 @@
+{
+    "framework": "jasmin",
+    "src_files": [
+        "public/assets/jquery/jquery.min.js",
+        "public/js/*.js"
+    ]
+}

@@ -1,16 +1,109 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" href="public/css/style.css" />
 	<script src="public/assets/jquery/jquery.min.js"></script>
 	<script src="public/js/main.js"></script>
-	<title>Camera Demo!</title>
+	<title>Convolution Camera!</title>
 </head>
 <body>
-	<h1>Camera Demo!</h1>
-	<video id="webcam" width="320" height="240"></video>
-	<canvas id="source" width="320" height="240"></canvas>
-    <canvas id="dest" width="320" height="240"></canvas>
-	<div class="debug"></div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=412572172152958";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div id="overlay"><span>Please Allow Camera...</span></div>
+    <div class="container">
+    	<h1>Convolution Camera!</h1>
+        <div class="social">
+            <div class="fb-like" data-href="http://howlowck.github.io/camera/" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="lucida grande"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="html5">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <p> This app is using HTML5 GetUserMedia, Canvas, Web Workers! <br>
+         <strong>Play with the effects</strong> or change the values of the convolution matrix to see the results. <br>
+         You can also save an image after you capture it. :)</p>
+        <div class="image">
+            <h2>Original </h2>
+            <video id="webcam" width="320" height="240"></video>
+        </div>
+        <div class="arrow hidden"><i class="icon-arrow-right"></i></div>
+        <div class="image">
+            <h2>Canvas Image</h2>
+            <canvas id="source" width="320" height="240"></canvas>
+            <div class="color">
+                R:<span class="red"></span> 
+                G:<span class="green"></span>
+                B:<span class="blue"></span>
+            </div>
+        </div>
+        <div class="arrow hidden"><i class="icon-arrow-right"></i></div>
+        <div class="image">
+            <h2>Processed</h2>
+            <canvas id="dest" width="320" height="240"></canvas>
+            <div class="fps">
+                FPS: <span></span>
+            </div>
+        </div>
+        <div class="config-container">
+            <div class="config effects">
+                <h2>Effects</h2>
+                <select name="effects" id="effects">
+                    <option value="none">No Effect</option>
+                    <option value="blur">Blur</option>
+                    <option value="sharpen">Sharpen</option>
+                    <option value="sharpen2">Sharpen 2</option>
+                    <option value="edge">Edge</option>
+                    <option value="edge2">Edge2</option>
+                    <option value="emboss">Emboss</option>
+                    <option value="grudge">Grudge</option>
+                    <option value="inverted">Inverted</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            <div class="config">
+                <h2>Matrix</h2>
+                <table class="conMatrix">
+                    <tr>
+                        <td><input class="conv-value" type="text" id="0_0"/></td>
+                        <td><input class="conv-value" type="text" id="0_1"/></td>
+                        <td><input class="conv-value" type="text" id="0_2"/></td>
+                    </tr>
+                    <tr>
+                        <td><input class="conv-value" type="text" id="1_0"/></td>
+                        <td><input class="conv-value" type="text" id="1_1"/></td>
+                        <td><input class="conv-value" type="text" id="1_2"/></td>
+                    </tr>
+                    <tr>
+                        <td><input class="conv-value" type="text" id="2_0"/></td>
+                        <td><input class="conv-value" type="text" id="2_1"/></td>
+                        <td><input class="conv-value" type="text" id="2_2"/></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="config divider">
+                <span>/</span>
+            </div>
+            <div class="config">
+                <h2>Divisor</h2>
+                <input class="divisor-value" type="text" />
+            </div>
+            <div class="config divider">
+                <span><i class="icon-plus"></i></span>
+            </div>
+            <div class="config">
+                <h2>Offset</h2>
+                <input class="offset-value" type="text" />
+            </div>
+        </div>
+        <div class="capture-container">
+            <button class="btn" id="save"><i class="icon-camera-retro"></i> Capture Image</button>
+            <img class="capture" src="" />
+        </div>
+    </div>
 </body>
 </html>

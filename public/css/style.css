@@ -1,0 +1,166 @@
+@import url(http://fonts.googleapis.com/css?family=Arimo:400,700);
+* {
+  font-family: 'Arimo', sans-serif; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(grid_noise.png); }
+
+input {
+  padding: 5px;
+  font-size: 1.4em;
+  border-radius: 5px;
+  border: 1px #aaaaaa solid;
+  text-align: center; }
+
+.btn {
+  position: relative;
+  top: 0.07em;
+  font-size: 1.5em;
+  color: #ecf0f1;
+  margin: 5px;
+  border: none;
+  background-color: #2f7ba9;
+  padding: 3px 1em;
+  border-radius: 3px;
+  cursor: pointer;
+  border-width: 1px;
+  border-color: #194159;
+  border-style: solid; }
+  .btn:hover {
+    background-color: #4197ca;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250, 250, 250, 0.3)), to(rgba(0, 0, 0, 0)));
+    background-image: -moz-linear-gradient(rgba(250, 250, 250, 0.3), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(rgba(250, 250, 250, 0.3), rgba(0, 0, 0, 0)); }
+  .btn:active {
+    background-color: #2a6d95;
+    box-shadow: 2px 2px 3px rgba(20, 20, 20, 0.3) inset;
+    background-image: none; }
+
+select {
+  padding: 5px;
+  font-size: 1.4em; }
+
+.container {
+  position: relative;
+  padding: 1px 20px 20px 20px;
+  margin: 0;
+  width: 1080px;
+  margin: 0 auto;
+  background-color: #eeeeee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+
+.social {
+  display: inline-block;
+  position: absolute;
+  top: 25px;
+  right: 0; }
+
+.hidden {
+  display: none !important; }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #eeeeee;
+  z-index: 200; }
+  #overlay span {
+    display: block;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -200px;
+    text-align: center;
+    width: 400px;
+    font-size: 20px; }
+
+.color .red {
+  color: red; }
+.color .green {
+  color: green; }
+.color .blue {
+  color: blue; }
+
+.image {
+  position: relative;
+  display: inline-block;
+  vertical-align: top; }
+  .image .fps {
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.arrow {
+  position: relative;
+  top: 170px;
+  display: inline-block;
+  font-size: 30px;
+  margin: 0 5px; }
+
+.config-container {
+  background-color: #cccccc;
+  display: inline-block;
+  padding: 0 20px 20px 20px;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-bottom: 50px; }
+  .config-container .config {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    text-align: center; }
+    .config-container .config input {
+      width: 30px; }
+      .config-container .config input.offset-value {
+        width: 60px; }
+    .config-container .config.effects {
+      margin-right: 110px; }
+    .config-container .config.divider {
+      position: relative;
+      top: 125px; }
+      .config-container .config.divider span {
+        font-weight: bold;
+        font-size: 20px; }
+    .config-container .config .divisor-value, .config-container .config .offset-value {
+      position: relative;
+      top: 48px; }
+
+.capture-arrow {
+  top: 3px;
+  color: #2f7ba9;
+  display: inline-block; }
+
+.capture-container {
+  position: absolute;
+  right: 37px;
+  bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 350px;
+  height: 300px;
+  text-align: center; }
+  .capture-container img {
+    width: 320px;
+    height: 240px;
+    border: 1px #cccccc solid;
+    border-radius: 3px; }
