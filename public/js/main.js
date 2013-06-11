@@ -133,7 +133,7 @@ $(function () {
 		if (window.webkitURL) {
 			videoSource = window.webkitURL.createObjectURL(stream);
 		} else {
-			videoSource = stream;
+			videoSource = window.URL.createObjectURL(stream);
 		}
 		video.autoplay = true;
 		video.src = videoSource;
@@ -174,7 +174,7 @@ $(function () {
 		console.log('congrats, you have getUserMedia!');
 		navigator.getUserMedia({video: true}, onSuccess, onFail);
 	} else {
-		alert('getUserMedia is not supported in this browser.');
+		alert('Camera Feature is not supported in this browser.');
 	}
 
 });
