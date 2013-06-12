@@ -137,7 +137,10 @@ $(function () {
 		}
 		video.autoplay = true;
 		video.src = videoSource;
-
+		video.onloadedmetadata = function (e) {
+			console.log(e);
+			//For some reason Firefox needs this to work... 
+		};
 		sourceCtx.drawImage(video, 0, 0, video.width, video.height);
 		var sourceImage = sourceCtx.getImageData(0, 0, video.width, video.height);
 		var worker = new Worker(document.URL + '/public/js/convolve.js');
