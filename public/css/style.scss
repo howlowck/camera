@@ -98,6 +98,23 @@ input{
     border-radius: 5px;
     border: 1px #aaaaaa solid;
     text-align: center;
+    &[type="range"]{
+        $size: 20px;
+        -webkit-appearance:none;
+        background-image: none;
+        padding: 2px;
+        border-radius: $size;
+        width: 400px;
+        height: 5px;
+        &::-webkit-slider-thumb{
+            -webkit-appearance:none;  
+            -moz-apperance:none;
+            width:$size; 
+            height:$size;
+            border-radius: $size;
+            background-color: $btn-default;
+        }
+    }
 }
 .btn {
     position: relative;

@@ -32,15 +32,3 @@ var convolve = function (oldPixels, width, convolveMatrix, divisor, offset) {
     return newpixels;
 };
 
-self.addEventListener('message', function (e) {
-    var matrix = e.data.conmat,
-        oldpx = e.data.image.data,
-        w = e.data.width,
-        divisor = e.data.divisor,
-        offset = e.data.offset;
-
-    var newpx = convolve(oldpx, w, matrix, divisor, offset);
-
-    //image.data = newpx;
-    self.postMessage({image: newpx});
-});
