@@ -146,7 +146,7 @@ $(function () {
 	};
 	var createWorkers = function () {
 		for (var iwork = 0; iwork < workerCount; iwork++) {
-			var aWorker = new Worker(document.URL + '/public/js/worker.js');
+			var aWorker = new Worker(document.location.origin + document.location.pathname + 'public/js/worker.js');
 			addWorkerEventListener(aWorker);
 			workers.push(aWorker);
 		}
