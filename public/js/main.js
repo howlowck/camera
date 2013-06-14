@@ -172,9 +172,9 @@ $(function () {
 			var pos = "middle";
 			if (iwork === 0) {
 				pos = "first";
-			} else if (iwork === workerCount - 1 ) {
+			} else if (iwork === workerCount - 1) {
 				pos = "last";
-			} 
+			}
 			var imgChunk = toSegment(fro, to, pos);
 			workers[iwork].postMessage({
 				image: imgChunk,
@@ -182,13 +182,12 @@ $(function () {
 				width: 320,
 				divisor: divisor,
 				offset: offset,
-				start: fro, 
+				start: fro,
 				pos: pos
 			});
 		}
 	};
 	var toSegment = function (fro, to, pos) {
-		
 		if (!useCurtain) {
 			return new Uint8ClampedArray(sourceImage.data.buffer.slice(fro, to));
 		}
