@@ -1,12 +1,12 @@
 #Camera
 [here is the Demo](http://howlowck.github.io/camera)
 ## Features
-- Web worker for image processing;
-- Classic convolution method
-- D3 for histogram
+- Multiple Web workers for image processing;
+- Classic convolution method;
+- Ability to edit convolution matrix in realtime;
+- Ability to change the number of web workers in query string;
+- Aimed to optimize convolution algorithm;
 
 ## TODO
-- Better optimization
-- Ability to edit convolution matrix in realtime
-- D3 Implementation
-- Better organization with backbone?
+- Even Better optimization
+- D3 Implementation for histogram
