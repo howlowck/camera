@@ -24,9 +24,11 @@
             <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="html5">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </div>
-        <p> This app is using HTML5 GetUserMedia, Canvas, Web Workers! <br>
          <strong>Play with the effects</strong> or change the values of the convolution matrix to see the results. <br>
-         You can also save an image after you capture it. :)</p>
+         You can capture a frame and save it :)</p>
+        <p> This demo works best in Chrome, slower in Opera, and buggy in Firefox. <br> Everything else, either does not support getUserMedia or Web workers. </p>
+        <p> To change the number of web workers simply add it to the query string thus... If you want 2 web workers, <span class="code"> .../camera/<strong>?2</strong></span></p>
+        Defaults to 10 workers, you can set 1 to 20.  But you would get weird results if the number is not divisble by 240.
         <div class="image">
             <h2>Original </h2>
             <video id="webcam" width="320" height="240"></video>
