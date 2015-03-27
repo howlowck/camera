@@ -1,4 +1,4 @@
-var convolve = function (oldPixels, width, convolveMatrix, divisor, offset) {
+var convolve = function (oldPixels, width, height, convolveMatrix, divisor, offset) {
     var cmat0 = convolveMatrix[0][0],
         cmat1 = convolveMatrix[0][1],
         cmat2 = convolveMatrix[0][2],

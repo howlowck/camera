@@ -23,7 +23,8 @@ $(function () {
 		fps = 0,
 		now,
 		imageData,
-		curtainSize;
+		curtainSize,
+		useSIMD = true;
 	$('#source').on('mousemove', function (e) {
 		var RGB = getRgb(e.offsetX, e.offsetY);
 			//index = getPixIndex(e.offsetX, e.offsetY),
@@ -36,10 +37,14 @@ $(function () {
 		var img = canvasDest.toDataURL("image/jpeg");
 		$(".capture").attr("src", img).removeClass("hidden");
 	});
-	var getWorkerCountFromUrl = function () {
-		var val = parseInt(window.location.search.slice(1), 10);
+	var processQueryString = function () {
+		var strings = window.location.search.slice(1).split('&');
+		var val = parseInt( strings[0] , 10);
 		if (val > 0 && val < 20) {
 			workerCount = val;
+		}
+		if (strings[1] === 'nosimd') {
+			useSIMD = false;
 		}
 	};
 	var setUIInput = function (defaultMatrix, defaultDivisor, defaultOffset) {
@@ -165,7 +170,7 @@ $(function () {
 		}
 	};
 	var fireWorkers = function () {
-		toSource();
+		toSource(); //refreshes the source image
 		for (var iwork = 0; iwork < workerCount; iwork++) {
 			var fro = chunksize * iwork;
 			var to = fro + chunksize;
@@ -180,10 +185,12 @@ $(function () {
 				image: imgChunk,
 				conmat: conmat,
 				width: 320,
+				height: 240,
 				divisor: divisor,
 				offset: offset,
 				start: fro,
-				pos: pos
+				pos: pos,
+				useSIMD: useSIMD
 			});
 		}
 	};
@@ -238,7 +245,7 @@ $(function () {
 		}
 	};
 	var onSuccess = function (stream) {
-		getWorkerCountFromUrl();
+		processQueryString();
 		$("#overlay").addClass("hidden");
 		$(".arrow").removeClass("hidden");
 		setUIInput(conmat, divisor, offset);
