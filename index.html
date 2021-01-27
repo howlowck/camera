@@ -3,8 +3,7 @@
 <head>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" href="public/css/style.css" />
-	<script src="public/assets/jquery/jquery.min.js"></script>
-	<script src="public/js/main.js"></script>
+	<!-- <script src="public/assets/jquery/jquery.min.js"></script> -->
 	<title>Convolution Camera!</title>
 </head>
 <body>
@@ -20,7 +19,7 @@
     <div class="container">
     	<h1>Convolution Camera!</h1>
         <div class="social">
-            <div class="fb-like" data-href="http://howlowck.github.io/camera/" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="lucida grande"></div>
+            <div class="fb-like" data-href="https://howlowck.github.io/camera/" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-font="lucida grande"></div>
             <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="html5">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </div>
@@ -72,19 +71,19 @@
                 <h2>Matrix</h2>
                 <table class="conMatrix">
                     <tr>
-                        <td><input class="conv-value" type="text" id="0_0"/></td>
-                        <td><input class="conv-value" type="text" id="0_1"/></td>
-                        <td><input class="conv-value" type="text" id="0_2"/></td>
+                        <td><input class="conv-value" type="text" id="r0_c0"/></td>
+                        <td><input class="conv-value" type="text" id="r0_c1"/></td>
+                        <td><input class="conv-value" type="text" id="r0_c2"/></td>
                     </tr>
                     <tr>
-                        <td><input class="conv-value" type="text" id="1_0"/></td>
-                        <td><input class="conv-value" type="text" id="1_1"/></td>
-                        <td><input class="conv-value" type="text" id="1_2"/></td>
+                        <td><input class="conv-value" type="text" id="r1_c0"/></td>
+                        <td><input class="conv-value" type="text" id="r1_c1"/></td>
+                        <td><input class="conv-value" type="text" id="r1_c2"/></td>
                     </tr>
                     <tr>
-                        <td><input class="conv-value" type="text" id="2_0"/></td>
-                        <td><input class="conv-value" type="text" id="2_1"/></td>
-                        <td><input class="conv-value" type="text" id="2_2"/></td>
+                        <td><input class="conv-value" type="text" id="r2_c0"/></td>
+                        <td><input class="conv-value" type="text" id="r2_c1"/></td>
+                        <td><input class="conv-value" type="text" id="r2_c2"/></td>
                     </tr>
                 </table>
             </div>
@@ -108,6 +107,7 @@
             <img class="capture" src="" />
         </div>
     </div>
+    <script src="public/js/main.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
